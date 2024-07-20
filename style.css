@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+:root {
+    --preto: #000;
+    --branco: rgb(245, 244, 244);
+    --laranja: orangered;
+    --cinza: #404040;
+}
+
+body {
+    font-family: Poppins;
+    background-color: var(--preto);
+    color: var(--branco);
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--branco)
+}
+
+header {
+    width: 1140px;
+    max-width: 80%;
+    margin: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+
+header a {
+    margin: 40px
+}
+
+.carrocel {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: -50px;
+    position: relative;
+}
+
+.carrocel .lista .item {
+    position: absolute;
+    inset: 0 0 0 0;
+}
+
+.carrocel .lista .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carrocel .lista .item .conteudo {
+    position: absolute;
+    top: 20%;
+    width: 1140px;
+    max-width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-right: 20%;
+    box-sizing: border-box;
+    color: var(--branco);
+    text-shadow: 0 5px 10px var(--preto);
+}
+
+.carrocel .lista .item .conteudo .autor {
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+
+.carrocel .lista .item .conteudo .titulo,
+.carrocel .lista .item .conteudo .topico {
+    font-weight: bold;
+    font-size: 5em;
+    list-style: 1.3rem;
+}
+
+.carrocel .lista .item .conteudo .topico {
+    color: var(--laranja);
+}
+
+.carrocel .lista .item .conteudo .descricao {
+    margin-bottom: 10px;
+}
+
+.carrocel .lista .item .conteudo .botoes {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    gap: 5px;
+}
+
+.carrocel .lista .item .conteudo button {
+    border: none;
+    background-color: var(--branco);
+    letter-spacing: 3px;
+    font-family: Poppins;
+    font-weight: 500;
+}
+
+.carrocel .lista .item .conteudo button:nth-child(2) {
+    background-color: transparent;
+    color: var(--branco);
+    border: 1px solid var(--branco);
+}
+
+/* Miniaturas */
+.miniatura {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: max-content;
+    z-index: 100;
+    display:flex;
+    gap: 20px;
+}
+
+.miniatura .item {
+    width: 150px;
+    height: 220px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.miniatura .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.miniatura .item .conteudo .titulo{
+    font-weight: bold;
+}
+
+/* Setas p/ navegar */
+.setas {
+    position: absolute;
+    top: 80%;
+    right: 52%;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.setas button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--cinza);
+    border: none;
+    font-family: monospace;
+    color: var(--branco);
+    font-weight: bold;
+    font-size: large;
+    transition: .5s;
+    z-index: 100;
+}
+
+.setas button:hover {
+    background: var(--laranja);
+    cursor:pointer;
+}
+
+/* Efeito Textos e Botoes surgindo */
+.carrocel .lista .item:nth-child(1){
+    z-index: 1;
+}
+
+.carrocel .lista .item:nth-child(1) .autor,
+.carrocel .lista .item:nth-child(1) .titulo,
+.carrocel .lista .item:nth-child(1) .topico,
+.carrocel .lista .item:nth-child(1) .descricao,
+.carrocel .lista .item:nth-child(1) .botoes {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+}
+
+@keyframes showContent {
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+.carrocel .lista .item:nth-child(1) .titulo {
+    animation-delay: 1.2s;
+}
+.carrocel .lista .item:nth-child(1) .topico {
+    animation-delay: 1.4s;
+}
+.carrocel .lista .item:nth-child(1) .descricao {
+    animation-delay: 1.6s;
+}
+.carrocel .lista .item:nth-child(1) .botoes {
+    animation-delay: 1.8s;
+}
+
+
+/* Efeito pós click */
+.carrocel.next .lista .item:nth-child(1) img {
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    border-radius: 20px;
+    animation: showImage 0.5s linear 1 forwards;
+}
+@keyframes showImage {
+    to {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+
+.carrocel.next .miniatura .item:nth-last-child(1) {
+    width: 0;
+    overflow: hidden;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+@keyframes showThumbnail {
+    to {
+        width: 150px;
+    }
+}
+
+.carrocel.next .miniatura {
+    transform: translatex(150px);
+    animation: transformThumbnail .5s linear 1 forwards;
+}
+@keyframes transfromThumbnail {
+    to {
+        transform: translateX(0)
+    }
+}
