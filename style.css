@@ -191,7 +191,7 @@ header a {
     transform: translateY(50px);
     filter: blur(20px);
     opacity: 0;
-    animation: showContent 0.5s 1s linear 1 forwards;
+    animation: showContent 0.5s linear 1 forwards;
 }
 
 @keyframes showContent {
@@ -224,7 +224,7 @@ header a {
     left: 50%;
     bottom: 50px;
     border-radius: 20px;
-    animation: showImage 0.5s linear 1 forwards;
+    animation: showImage .5s linear 1 forwards;
 }
 @keyframes showImage {
     to {
@@ -246,9 +246,8 @@ header a {
         width: 150px;
     }
 }
-
 .carrocel.next .miniatura {
-    transform: translatex(150px);
+    transform: translateX(150px);
     animation: transformThumbnail .5s linear 1 forwards;
 }
 @keyframes transfromThumbnail {
@@ -266,7 +265,7 @@ header a {
     position: absolute;
     bottom: 0;
     left: 0;
-    animation: outImage 2.5s linear 1 forwards;
+    animation: outImage .7s linear 1 forwards;
 }
 @keyframes outImage {
     to {
@@ -285,4 +284,17 @@ header a {
     animation: showThumbnail .5s linear 1 forwards;
 }
 
-/* Parei em 16:54s */
+.carrocel.prev .lista .item:nth-child(2) .autor,
+.carrocel.prev .lista .item:nth-child(2) .titulo,
+.carrocel.prev .lista .item:nth-child(2) .topico,
+.carrocel.prev .lista .item:nth-child(2) .descricao,
+.carrocel.prev .lista .item:nth-child(2) .botoes {
+    animation: contentOut 1.5s linear 1 forwards;
+}
+@keyframes contentOut {
+    to {
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
