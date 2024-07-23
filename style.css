@@ -141,6 +141,7 @@ header a {
     bottom: 10px;
     left: 10px;
     right: 10px;
+    z-index: 100;
 }
 
 .miniatura .item .conteudo .titulo{
@@ -202,6 +203,9 @@ header a {
     }
 }
 
+.carrocel .lista .item:nth-child(1) .autor {
+    animation-delay: 0.5s;
+}
 .carrocel .lista .item:nth-child(1) .titulo {
     animation-delay: 1.2s;
 }
@@ -235,7 +239,6 @@ header a {
         border-radius: 0;
     }
 }
-
 .carrocel.next .miniatura .item:nth-last-child(1) {
     width: 0;
     overflow: hidden;
@@ -246,9 +249,10 @@ header a {
         width: 150px;
     }
 }
+
 .carrocel.next .miniatura {
     transform: translateX(150px);
-    animation: transformThumbnail .5s linear 1 forwards;
+    animation: transformThumbnail .5s linear 1 forwards;   
 }
 @keyframes transfromThumbnail {
     to {
@@ -257,7 +261,7 @@ header a {
 }
 
 
-/* Efeito pré click */
+/* Efeito antes do click */
 .carrocel.prev .lista .item:nth-child(2){
     z-index: 2;
 }
@@ -284,6 +288,7 @@ header a {
     animation: showThumbnail .5s linear 1 forwards;
 }
 
+
 .carrocel.prev .lista .item:nth-child(2) .autor,
 .carrocel.prev .lista .item:nth-child(2) .titulo,
 .carrocel.prev .lista .item:nth-child(2) .topico,
@@ -296,5 +301,43 @@ header a {
         transform: translateY(-150px);
         filter: blur(20px);
         opacity: 0;
+    }
+}
+
+.carrocel.next .setas button,
+.carrocel.prev .setas button {
+    pointer-events: none;
+}
+
+/* DIV classe time (barra de contagem de tempo) */
+.time {
+    width: 0%;
+    height: 4px;
+    background-color: var(--laranja);
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+}
+
+.carrocel.next .time,
+.carrocel.prev .time {
+    width: 100%;
+    animation: timeRunning 2s linear 1 forwards;
+}
+@keyframes timeRunning {
+    to {
+        width: 0;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .carrocel .lista .item .conteudo {
+        padding-right: 0;
+    }
+    .carrocel .lista .item .conteudo .titulo,
+    .carrocel .lista .item .conteudo .topico {
+        font-size: 30px;
+        letter-spacing: 5px;
     }
 }
